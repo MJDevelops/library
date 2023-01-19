@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;700&display=swap" rel="stylesheet">
+    <script src="index.js" defer></script>
+    <title>The Odin Library</title>
+  </head>
+  <body>
+    <div class="grid relative grid-rows-[1fr_5fr_1fr] h-[100vh]">
+      <!-- Header -->
+      <div class="text-2xl shadow-header font-fonts flex items-center justify-center p-6">
+        <p>The Odin Library</p>
+      </div>
+      <!-- Main -->
+      <div id="main" class="flex items-start justify-center bg-[#ECF0DA]">
+        <button id="book-btn" class="border-4 m-3 rounded-lg border-black p-4 hover:bg-black hover:text-white">+ Add Book</button>
+      </div>
+      <!-- Form -->
+      <div class="hidden border gap-3 p-7 absolute flex-col bg-white rounded-md self-center justify-self-center items-center justify-center" id="form-div">
+        <h1>Add your Book</h1>
+        <form class="flex flex-col gap-3" id="form">
+          <!-- Title Input -->
+          <div>
+            <input class="outline p-1 rounded-md" type="text" name="book_title" id="book-title" placeholder="Title">
+          </div>
+          <!-- Author Input -->
+          <div>
+            <input class="outline p-1 rounded-md" type="text" name="book_author" id="book-author" placeholder="Author">
+          </div>
+          <!-- Pages -->
+          <div>
+            <input class="outline p-1 rounded-md" type="tel" name="book_pages" id="book-pages" placeholder="Pages">
+          </div>
+        </form>
+        <button class="border-4 border-black rounded-md p-3 hover:bg-black hover:text-white" type="submit" form="form">Add Book</button>
+      </div>
+      <!-- Footer -->
+      <div class="flex items-center justify-center text-xl">
+        <p>&#169; MJP</p>
+      </div>
+    </div>
+  </body>
+</html>

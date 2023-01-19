@@ -1,0 +1,24 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "In this simple app you will be able to add books to a list and modify the status!",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i ./styles.css -o ./css/main.css",
+    "watch": "tailwindcss -i ./styles.css -o ./css/main.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MJProgramming/library.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MJProgramming/library/issues"
+  },
+  "homepage": "https://github.com/MJProgramming/library#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  }
+}
