@@ -3,13 +3,33 @@
 @tailwind utilities;
 
 .book-item {
-    @apply flex flex-col border border-none rounded-md bg-white items-center justify-center;
+    @apply flex flex-col border border-none rounded-md bg-white items-center justify-center gap-2 p-5;
 }
 
 .rem-btn {
-    @apply border bg-red-600 w-3/4 p-1; 
+    @apply border bg-red-600 p-2; 
 }
 
 .read-btn {
-    @apply border bg-green-400 w-3/4 p-1;
+    @apply border bg-green-400 p-2;
+}
+
+.btn-div {
+    @apply flex gap-2 flex-row p-2;
+}
+
+.book-head {
+    @apply text-lg font-bold;
+}
+
+.status-read {
+    @apply bg-[linear-gradient(90deg,rgba(131,58,180,1)0%,rgba(95,253,29,1)0%,rgba(69,252,215,1)100%)];
+}
+
+.read-btn.status-btn-read {
+    @apply bg-red-500;
+}
+
+.read-btn.status-btn-noread {
+    @apply bg-green-400;
 }
