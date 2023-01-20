@@ -18,27 +18,31 @@
         <p>The Odin Library</p>
       </div>
       <!-- Main -->
-      <div id="main" class="flex items-start justify-center bg-[#ECF0DA]">
-        <button id="book-btn" class="border-4 m-3 rounded-lg border-black p-4 hover:bg-black hover:text-white">+ Add Book</button>
+      <div id="main" class="flex flex-col bg-[#ECF0DA]">
+        <button id="book-btn" class="border-4 self-center flex-none m-3 rounded-lg border-black p-4 hover:bg-black hover:text-white">+ Add Book</button>
+        <div id="book-display" class="grid grid-cols-4 grid-rows-4 grid-flow-row gap-3 flex-1">
+          
+        </div>
       </div>
       <!-- Form -->
-      <div class="hidden border gap-3 p-7 absolute flex-col bg-white rounded-md self-center justify-self-center items-center justify-center" id="form-div">
-        <h1>Add your Book</h1>
-        <form class="flex flex-col gap-3" id="form">
+      <div class="hidden w-[100%] border gap-3 p-7 absolute flex-col bg-white rounded-md self-center justify-self-center" id="form-div">
+        <h1 class="justify-self-center self-center">Add your Book</h1>
+        <button type="reset" form="form" class="absolute w-9 self-end border-none rounded hover:bg-[rgba(0,0,0,0.1)]" id="close-input"><img src="./images/close_FILL0_wght400_GRAD0_opsz48.svg" alt=""></button>
+        <form class="flex items-center justify-center flex-col gap-3" id="form">
           <!-- Title Input -->
           <div>
-            <input class="outline p-1 rounded-md" type="text" name="book_title" id="book-title" placeholder="Title">
+            <input class="outline p-1 rounded-md" type="text" name="book_title" id="book-title" placeholder="Title" required>
           </div>
           <!-- Author Input -->
           <div>
-            <input class="outline p-1 rounded-md" type="text" name="book_author" id="book-author" placeholder="Author">
+            <input class="outline p-1 rounded-md" type="text" name="book_author" id="book-author" placeholder="Author" required>
           </div>
           <!-- Pages -->
           <div>
-            <input class="outline p-1 rounded-md" type="tel" name="book_pages" id="book-pages" placeholder="Pages">
+            <input class="outline p-1 rounded-md" type="tel" name="book_pages" id="book-pages" placeholder="Pages" required pattern="^\d{1,}$">
           </div>
         </form>
-        <button class="border-4 border-black rounded-md p-3 hover:bg-black hover:text-white" type="submit" form="form">Add Book</button>
+        <button class="border-4 border-black rounded-md p-3 hover:bg-black hover:text-white self-center justify-self-center" type="submit" form="form" id="sub-btn">Add Book</button>
       </div>
       <!-- Footer -->
       <div class="flex items-center justify-center text-xl">

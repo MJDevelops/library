@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.book-item {
+    @apply flex flex-col border border-none rounded-md bg-white items-center justify-center;
+}
+
+.rem-btn {
+    @apply border bg-red-600 w-3/4 p-1; 
+}
+
+.read-btn {
+    @apply border bg-green-400 w-3/4 p-1;
+}
