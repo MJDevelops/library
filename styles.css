@@ -11,7 +11,7 @@
 }
 
 .read-btn {
-    @apply border bg-green-400 p-2;
+    @apply border bg-red-400 p-2;
 }
 
 .btn-div {
@@ -27,9 +27,14 @@
 }
 
 .read-btn.status-btn-read {
-    @apply bg-red-500;
+    @apply bg-green-500;
 }
 
-.read-btn.status-btn-noread {
-    @apply bg-green-400;
+.hide-item {
+    @apply hidden;
 }
+
+.input {
+    @apply outline outline-gray-400 p-1 rounded-md focus:outline-[#ECF0DA] focus:outline-4;
+}
+

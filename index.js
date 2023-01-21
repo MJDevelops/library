@@ -9,12 +9,24 @@ const formElem = document.getElementById('form');
 
 const lib = [];
 
-function Book(title, author, pages, isDisplayed, hasRead) {
+function Book(title, author, pages) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.isDisplayed = isDisplayed;
-  this.hasRead = hasRead;
+}
+
+Book.prototype.changeReadStatus = function () {
+  if (this.hasRead === true) {
+    this.hasRead = false;
+  } else {
+    this.hasRead = true;
+  }
+};
+
+function setBookDetails(index) {
+  lib[index].title = titleElem.value;
+  lib[index].author = authorElem.value;
+  lib[index].pages = pagesElem.value;
 }
 
 function removeBook(btn) {
@@ -23,24 +35,24 @@ function removeBook(btn) {
   lib.splice(bookIndex, 1);
 }
 
-function changeStatusColor(btn) {
+function changeStatus(btn) {
   const parent = btn.closest('.book-item');
   const index = parent.getAttribute('data-index');
 
-  if (lib[index].hasRead !== true) {
-    lib[index].hasRead = true;
-    parent.classList.add('status-read');
-    btn.classList.add('status-btn-read');
+  lib[index].changeReadStatus();
+
+  if (!lib[index].hasRead) {
+    parent.classList.remove('status-read');
+    btn.classList.remove('status-btn-read');
     btn.textContent = 'Not Read';
   } else {
-    lib[index].hasRead = false;
-    btn.classList.remove('status-btn-read');
-    parent.classList.remove('status-read');
+    parent.classList.add('status-read');
+    btn.classList.add('status-btn-read');
     btn.textContent = 'Read';
   }
 }
 
-function displayBooks() {
+function createBook() {
   for (let i = 0; i < lib.length; i += 1) {
     if (lib[i].isDisplayed !== true) {
       const bookDiv = document.createElement('div');
@@ -50,26 +62,28 @@ function displayBooks() {
       const numberPages = document.createElement('p');
       const remove = document.createElement('button');
       const hasRead = document.createElement('button');
-      const titleLib = lib[i].title;
-      const authorLib = lib[i].author;
-      const pagesLib = lib[i].pages;
 
-      bookHead.textContent = titleLib;
-      bookBody.textContent = `By: ${authorLib}`;
-      numberPages.textContent = `Pages: ${pagesLib}`;
+      setBookDetails(i);
+
+      bookHead.textContent = lib[i].title;
+      bookBody.textContent = `By: ${lib[i].author}`;
+      numberPages.textContent = `Pages: ${lib[i].pages}`;
       remove.textContent = 'Remove';
-      hasRead.textContent = 'Read';
+      hasRead.textContent = 'Not Read';
 
       remove.classList.add('rem-btn');
       hasRead.classList.add('read-btn');
       bookHead.classList.add('book-head');
+      bookDiv.classList.add('book-item');
+      bookDiv.setAttribute('data-index', `${i}`);
+      buttonDiv.classList.add('btn-div');
 
       remove.addEventListener('click', () => {
         removeBook(remove);
       });
 
       hasRead.addEventListener('click', () => {
-        changeStatusColor(hasRead);
+        changeStatus(hasRead);
       });
 
       bookDiv.appendChild(bookHead);
@@ -78,31 +92,45 @@ function displayBooks() {
       buttonDiv.appendChild(remove);
       buttonDiv.appendChild(hasRead);
       bookDiv.appendChild(buttonDiv);
-      bookDiv.setAttribute('data-index', `${i}`);
-      bookDiv.classList.add('book-item');
-      buttonDiv.classList.add('btn-div');
+
       bookDisplay.appendChild(bookDiv);
       lib[i].isDisplayed = true;
     }
   }
 }
 
-function addBookToLibrary() {
-  lib.push(new Book(titleElem.value, authorElem.value, pagesElem.value, false, false));
-  form.classList.add('hidden');
-  formBtn.classList.remove('hidden');
-  displayBooks();
-}
-
-closeIn.addEventListener('click', () => {
-  form.classList.add('hidden');
-  formBtn.classList.remove('hidden');
-});
-
-formBtn.addEventListener('click', () => {
+function openForm() {
+  const bookItems = document.querySelectorAll('.book-item');
+  bookItems.forEach((item) => {
+    item.classList.add('hide-item');
+  });
   form.classList.remove('hidden');
   form.classList.add('flex');
   formBtn.classList.add('hidden');
+}
+
+function closeForm() {
+  const bookItems = document.querySelectorAll('.book-item');
+  bookItems.forEach((item) => {
+    item.classList.remove('hide-item');
+  });
+  form.classList.remove('flex');
+  form.classList.add('hidden');
+  formBtn.classList.remove('hidden');
+}
+
+function addBookToLibrary() {
+  lib.push(Object.create(Book.prototype));
+  closeForm();
+  createBook();
+}
+
+closeIn.addEventListener('click', () => {
+  closeForm();
+});
+
+formBtn.addEventListener('click', () => {
+  openForm();
 });
 
 formElem.addEventListener('submit', (e) => {

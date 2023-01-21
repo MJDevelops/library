@@ -32,22 +32,23 @@
         <form class="flex items-center justify-center flex-col gap-3" id="form">
           <!-- Title Input -->
           <div>
-            <input class="outline p-1 rounded-md" type="text" name="book_title" id="book-title" placeholder="Title" required>
+            <input class="input" type="text" name="book_title" id="book-title" placeholder="Title" required>
           </div>
           <!-- Author Input -->
           <div>
-            <input class="outline p-1 rounded-md" type="text" name="book_author" id="book-author" placeholder="Author" required>
+            <input class="input" type="text" name="book_author" id="book-author" placeholder="Author" required>
           </div>
           <!-- Pages -->
           <div>
-            <input class="outline p-1 rounded-md" type="tel" name="book_pages" id="book-pages" placeholder="Pages" required pattern="^\d{1,}$">
+            <input class="input" type="tel" name="book_pages" id="book-pages" placeholder="Pages" required pattern="^\d{1,}$">
           </div>
         </form>
-        <button class="border-4 border-black rounded-md p-3 hover:bg-black hover:text-white self-center justify-self-center" type="submit" form="form" id="sub-btn">Add Book</button>
+        <button class="border-4 border-gray-400 rounded-md p-3 text-gray-400 hover:bg-gray-400 hover:text-white self-center justify-self-center" type="submit" form="form" id="sub-btn">Add Book</button>
       </div>
       <!-- Footer -->
-      <div class="flex items-center justify-center text-xl">
+      <div class="flex items-center gap-3 justify-center text-xl">
         <p>&#169; MJP</p>
+        <a class="w-8" href="https://github.com/MJProgramming/library"><img src="./images/github-mark.svg" alt="GitHub Logo"></a>
       </div>
     </div>
   </body>
