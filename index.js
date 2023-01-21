@@ -127,7 +127,7 @@ function addBookToLibrary() {
       break;
     }
     i += 1;
-  } while (lib[i] === undefined);
+  } while (lib[i] !== undefined);
   closeForm();
   createBook();
 }
