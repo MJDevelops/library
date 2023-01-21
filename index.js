@@ -32,7 +32,7 @@ function setBookDetails(index) {
 function removeBook(btn) {
   const bookIndex = btn.closest('.book-item').getAttribute('data-index');
   btn.closest('.book-item').remove();
-  lib.splice(bookIndex, 1);
+  delete lib[bookIndex];
 }
 
 function changeStatus(btn) {
@@ -120,7 +120,14 @@ function closeForm() {
 }
 
 function addBookToLibrary() {
-  lib.push(Object.create(Book.prototype));
+  let i = 0;
+  do {
+    if (lib[i] === undefined) {
+      lib[i] = Object.create(Book.prototype);
+      break;
+    }
+    i += 1;
+  } while (lib[i] === undefined);
   closeForm();
   createBook();
 }
