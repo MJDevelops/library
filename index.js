@@ -54,7 +54,7 @@ function changeStatus(btn) {
 
 function createBook() {
   for (let i = 0; i < lib.length; i += 1) {
-    if (lib[i].isDisplayed !== true) {
+    if (lib[i] !== undefined && lib[i].isDisplayed !== true) {
       const bookDiv = document.createElement('div');
       const buttonDiv = document.createElement('div');
       const bookHead = document.createElement('p');
@@ -127,7 +127,7 @@ function addBookToLibrary() {
       break;
     }
     i += 1;
-  } while (lib[i] !== undefined);
+  } while (true);
   closeForm();
   createBook();
 }
